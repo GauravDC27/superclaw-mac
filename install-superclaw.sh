@@ -44,7 +44,7 @@ printf '%s' "$DMG_PASSWORD" | hdiutil attach -stdinpass -nobrowse -readonly -mou
 [ -d "$MNT/$APP_NAME" ] || die "$APP_NAME not found inside the disk image."
 
 # Quit any running instance so we can replace it.
-# (pkill, not osascript: never reads stdin and triggers no GUI/automation prompt.)
+# (pkill never reads stdin and triggers no GUI or automation-permission prompt.)
 pkill -f '/SuperClaw\.app/Contents/MacOS/SuperClaw' 2>/dev/null || true
 sleep 1
 
