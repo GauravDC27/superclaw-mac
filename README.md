@@ -13,7 +13,7 @@ The password is **not** stored in this repo — you supply it in the install com
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GauravDC27/superclaw-mac/main/install-superclaw.sh | bash -s -- '<password>'
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GauravDC27/superclaw-mac/main/install-superclaw.sh)" _ '<password>'
 ```
 
 That downloads the encrypted image, mounts it with your password, installs

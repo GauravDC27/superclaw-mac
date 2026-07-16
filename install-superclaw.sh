@@ -43,8 +43,9 @@ printf '%s' "$DMG_PASSWORD" | hdiutil attach -stdinpass -nobrowse -readonly -mou
   || die "Could not mount image (wrong password or corrupt download)."
 [ -d "$MNT/$APP_NAME" ] || die "$APP_NAME not found inside the disk image."
 
-# Quit a running instance so we can replace it.
-osascript -e 'quit app "SuperClaw"' >/dev/null 2>&1 || true
+# Quit any running instance so we can replace it.
+# (pkill, not osascript: never reads stdin and triggers no GUI/automation prompt.)
+pkill -f '/SuperClaw\.app/Contents/MacOS/SuperClaw' 2>/dev/null || true
 sleep 1
 
 # Pick an install location that works for this user:
